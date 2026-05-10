@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Mock Tests – Exam Strategy Analyzer</title>
+    <meta name="description" content="Log mock test results — accuracy is calculated automatically.">
+    <meta name="keywords" content="mock test, exam score, test tracker, accuracy">
+    <meta property="og:title" content="Mock Tests – Exam Strategy Analyzer">
+    <meta property="og:description" content="Log mock test results and track accuracy automatically.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Mock page specific */
+        .score-hint { font-size: .75em; color: var(--text-secondary); margin-top: 4px; }
+        .contact-fields { border: 1.5px solid var(--border-main); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+        .contact-fields legend { color: var(--accent-gold); font-weight: 600; font-size: .82em; padding: 0 6px; letter-spacing: .06em; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <header class="sidebar-logo">
+            <h1>📖 Exam Analyzer</h1>
+            <span class="logo-sub">Strategy &amp; Performance</span>
+        </header>
+        <div class="sidebar-nav">
+            <a href="index.html"    class="nav-btn" data-page="index">   <span class="nav-icon">🏠</span> Home</a>
+            <a href="about.html"    class="nav-btn" data-page="about">   <span class="nav-icon">ℹ️</span> About</a>
+            <a href="study.html"    class="nav-btn" data-page="study">   <span class="nav-icon">📚</span> Study Log</a>
+            <a href="mock.html"     class="nav-btn" data-page="mock">    <span class="nav-icon">📝</span> Mock Tests</a>
+            <a href="analysis.html" class="nav-btn" data-page="analysis"><span class="nav-icon">📊</span> Analysis</a>
+            <a href="summary.html"  class="nav-btn" data-page="summary"> <span class="nav-icon">📋</span> Summary</a>
+        </div>
+        <aside class="sidebar-aside">
+            <p class="aside-tip">📝 <strong>Tip:</strong> Log tests right after taking them for accuracy.</p>
+        </aside>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Switch theme">
+                <span class="toggle-icon">🌙</span>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main-inner">
+
+            <div class="page-header">
+                <span class="page-icon">📝</span>
+                <div class="page-header-text">
+                    <h2>Mock Tests</h2>
+                    <p class="section-desc">Log test results — accuracy is calculated automatically</p>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>Add Test Result</h3>
+                    <form id="mockForm">
+                        <!-- Fieldset 1: Test Info -->
+                        <fieldset class="contact-fields">
+                            <legend>Test Info</legend>
+                            <div class="form-group">
+                                <label for="mockName">Subject</label>
+                                <input list="mockSubjectSuggestions" id="mockName" name="subject"
+                                    type="text" required placeholder="e.g. Physics">
+                                <datalist id="mockSubjectSuggestions">
+                                    <option value="Mathematics">
+                                    <option value="Physics">
+                                    <option value="Chemistry">
+                                    <option value="Computer Science">
+                                    <option value="English">
+                                    <option value="Biology">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="mockScore">Your Score</label>
+                                <input id="mockScore" name="score" type="number" min="0"
+                                    placeholder="e.g. 78" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mockTotal">Total Marks</label>
+                                <input id="mockTotal" name="total" type="number" min="1"
+                                    placeholder="e.g. 100" required>
+                                <p class="score-hint">Accuracy will be auto-calculated.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="mockTestDate">Test Date</label>
+                                <input id="mockTestDate" name="testDate" type="date" required>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 2: Additional Info -->
+                        <fieldset class="contact-fields">
+                            <legend>Additional Info</legend>
+                            <div class="form-group">
+                                <label for="mockEmail">Your Email (optional)</label>
+                                <input id="mockEmail" name="email" type="email"
+                                    placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="mockPhone">Contact (optional)</label>
+                                <input id="mockPhone" name="phone" type="tel"
+                                    placeholder="e.g. +91 98765 43210"
+                                    pattern="[+0-9 \-]{7,15}">
+                            </div>
+                            <div class="form-group">
+                                <label>Difficulty</label>
+                                <div class="radio-group">
+                                    <label class="radio-label"><input type="radio" name="difficulty" value="Easy"> Easy</label>
+                                    <label class="radio-label"><input type="radio" name="difficulty" value="Medium" checked> Medium</label>
+                                    <label class="radio-label"><input type="radio" name="difficulty" value="Hard"> Hard</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><input type="checkbox" id="mockTimed" name="timed"> Timed test</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="mockFeedback">Feedback (optional)</label>
+                                <textarea id="mockFeedback" name="feedback" rows="2"
+                                    placeholder="What went well or poorly?"
+                                    style="width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--border-main);background:var(--bg-input);color:var(--text-primary);font-family:inherit;font-size:.9em;resize:vertical;box-sizing:border-box;"></textarea>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit">+ Add Result</button>
+                        <div id="mockFormError" class="form-error" style="display:none;color:#f87171;font-size:.82em;margin-top:8px;"></div>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Test History</h3>
+                    <p class="section-desc" style="margin:0 0 10px;">All recorded test results.</p>
+                    <div id="mockList"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<footer class="site-footer">
+    <p>© 2025 Exam Strategy Analyzer · <a href="about.html">About</a> · <a href="summary.html">Summary</a> · Built for 22AIE115 – UID · <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

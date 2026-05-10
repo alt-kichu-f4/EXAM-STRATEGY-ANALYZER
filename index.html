@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 Home – Exam Strategy Analyzer</title>
+    <meta name="description" content="Your study dashboard — track time, accuracy and performance at a glance.">
+    <meta name="keywords" content="exam analyzer, study tracker, mock tests, student performance, academic tool">
+    <meta property="og:title" content="Exam Strategy Analyzer">
+    <meta property="og:description" content="Track your study time, log mock test scores, and get personalised analysis.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Home page specific */
+        .hero-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-cta-group a button { margin-top: 0; }
+        .hero-cta-secondary { background: transparent !important; border: 1.5px solid var(--accent-gold) !important; color: var(--accent-gold) !important; }
+        .hero-cta-secondary:hover { background: rgba(250,204,21,0.12) !important; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <header class="sidebar-logo">
+            <h1>📖 Exam Analyzer</h1>
+            <span class="logo-sub">Strategy &amp; Performance</span>
+        </header>
+        <div class="sidebar-nav">
+            <a href="index.html"    class="nav-btn" data-page="index">   <span class="nav-icon">🏠</span> Home</a>
+            <a href="about.html"    class="nav-btn" data-page="about">   <span class="nav-icon">ℹ️</span> About</a>
+            <a href="study.html"    class="nav-btn" data-page="study">   <span class="nav-icon">📚</span> Study Log</a>
+            <a href="mock.html"     class="nav-btn" data-page="mock">    <span class="nav-icon">📝</span> Mock Tests</a>
+            <a href="analysis.html" class="nav-btn" data-page="analysis"><span class="nav-icon">📊</span> Analysis</a>
+            <a href="summary.html"  class="nav-btn" data-page="summary"> <span class="nav-icon">📋</span> Summary</a>
+        </div>
+        <aside class="sidebar-aside">
+            <p class="aside-tip">💡 <strong>Tip:</strong> Add mock tests to unlock performance analysis.</p>
+        </aside>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Switch theme">
+                <span class="toggle-icon">🌙</span>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main-inner">
+
+            <div class="page-header">
+                <span class="page-icon">🏠</span>
+                <div class="page-header-text">
+                    <h2>Welcome Back</h2>
+                    <p class="section-desc">Your study dashboard at a glance</p>
+                </div>
+            </div>
+
+            <div class="hero-banner">
+                <h3>Study Smarter, Not Harder</h3>
+                <p>Track your study time, log mock test scores, and get personalised analysis to improve your exam performance.</p>
+                <div class="hero-cta-group">
+                    <a href="study.html"><button>Get Started →</button></a>
+                    <a href="about.html"><button class="hero-cta-secondary">Learn More</button></a>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <h3>Total Study Time</h3>
+                    <p id="totalTime" class="stat-value">0 mins</p>
+                </div>
+                <div class="card stat-card">
+                    <h3>Latest Accuracy</h3>
+                    <p id="latestAccuracy" class="stat-value">0%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Performance Overview</h3>
+                <div class="chart-legend">
+                    <span class="legend-item">🏆 Peak</span>
+                    <span class="legend-item">🚨 Critical (&lt;35%)</span>
+                    <span class="legend-item"><span class="legend-dot dot-critical"></span>Critical &lt;35%</span>
+                    <span class="legend-item"><span class="legend-dot dot-weak"></span>Weak 35–49%</span>
+                    <span class="legend-item"><span class="legend-dot dot-average"></span>Average 50–64%</span>
+                    <span class="legend-item"><span class="legend-dot dot-good"></span>Good 65–84%</span>
+                    <span class="legend-item"><span class="legend-dot dot-excellent"></span>Excellent ≥85%</span>
+                </div>
+                <canvas id="chart"></canvas>
+                <div class="chart-actions">
+                    <button onclick="drawChart()">↻ Refresh Chart</button>
+                    <button class="btn-reset" onclick="resetData()">🗑 Reset All Data</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Daily Motivation</h3>
+                <div class="output" id="quoteText">Click the button for a motivational quote!</div>
+                <button onclick="generateQuote()">New Quote</button>
+                <details class="tip-details">
+                    <summary>📌 How to use this app</summary>
+                    <ul class="tip-list">
+                        <li>Go to <a href="study.html">Study Log</a> to log daily sessions.</li>
+                        <li>Go to <a href="mock.html">Mock Tests</a> to record test results.</li>
+                        <li>Visit <a href="analysis.html">Analysis</a> to see weak areas.</li>
+                        <li>Check <a href="summary.html">Summary</a> for a full table view.</li>
+                    </ul>
+                </details>
+            </div>
+
+            <section id="resources" class="card">
+                <h3>Quick Resources</h3>
+                <div class="media-grid">
+                    <article class="media-card">
+                        <h4>📺 Study Techniques</h4>
+                        <p>Effective study methods explained:</p>
+                        <div class="video-wrap">
+                            <iframe
+                                src="https://www.youtube.com/embed/Z-zNHHpXoMM"
+                                title="Study techniques tutorial video"
+                                width="100%" height="200"
+                                allowfullscreen
+                                loading="lazy">
+                                Your browser does not support iframes.
+                            </iframe>
+                        </div>
+                    </article>
+                    <article class="media-card" id="tips">
+                        <h4>🎵 Focus Audio</h4>
+                        <p>Ambient sound for focused studying:</p>
+                        <audio controls>
+                            <source src="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg" type="audio/ogg">
+                            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h4 style="margin-top:14px;">🎬 Demo Clip</h4>
+                        <video controls width="100%" style="border-radius:8px;margin-top:6px;">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support the video element.
+                        </video>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+<footer class="site-footer">
+    <p>© 2025 Exam Strategy Analyzer · <a href="about.html">About</a> · <a href="summary.html">Summary</a> · Built for 22AIE115 – UID · <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

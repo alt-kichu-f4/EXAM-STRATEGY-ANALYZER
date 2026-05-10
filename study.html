@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Study Log – Exam Strategy Analyzer</title>
+    <meta name="description" content="Log study sessions by subject and topic and track your total study time.">
+    <meta name="keywords" content="study log, study tracker, session tracker, subject log">
+    <meta property="og:title" content="Study Log – Exam Strategy Analyzer">
+    <meta property="og:description" content="Log your study sessions by subject and topic.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Study page specific */
+        .form-row { display: flex; gap: 12px; }
+        .form-row .form-group { flex: 1; }
+        .contact-fields { border: 1.5px solid var(--border-main); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+        .contact-fields legend { color: var(--accent-gold); font-weight: 600; font-size: .82em; padding: 0 6px; letter-spacing: .06em; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <header class="sidebar-logo">
+            <h1>📖 Exam Analyzer</h1>
+            <span class="logo-sub">Strategy &amp; Performance</span>
+        </header>
+        <div class="sidebar-nav">
+            <a href="index.html"    class="nav-btn" data-page="index">   <span class="nav-icon">🏠</span> Home</a>
+            <a href="about.html"    class="nav-btn" data-page="about">   <span class="nav-icon">ℹ️</span> About</a>
+            <a href="study.html"    class="nav-btn" data-page="study">   <span class="nav-icon">📚</span> Study Log</a>
+            <a href="mock.html"     class="nav-btn" data-page="mock">    <span class="nav-icon">📝</span> Mock Tests</a>
+            <a href="analysis.html" class="nav-btn" data-page="analysis"><span class="nav-icon">📊</span> Analysis</a>
+            <a href="summary.html"  class="nav-btn" data-page="summary"> <span class="nav-icon">📋</span> Summary</a>
+        </div>
+        <aside class="sidebar-aside">
+            <p class="aside-tip">📚 <strong>Tip:</strong> Log at least 30 mins per subject daily.</p>
+        </aside>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Switch theme">
+                <span class="toggle-icon">🌙</span>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main-inner">
+
+            <div class="page-header">
+                <span class="page-icon">📚</span>
+                <div class="page-header-text">
+                    <h2>Study Log</h2>
+                    <p class="section-desc">Log sessions by subject and topic — history appears on the right</p>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>Add Study Session</h3>
+                    <form id="studyForm">
+                        <!-- Fieldset 1: Session Info -->
+                        <fieldset class="contact-fields">
+                            <legend>Session Info</legend>
+                            <div class="form-group">
+                                <label for="studySubject">Subject</label>
+                                <input list="subjectSuggestions" id="studySubject" name="subject"
+                                    type="text" required placeholder="e.g. Mathematics"
+                                    pattern="[A-Za-z0-9 \-]+" title="Letters, numbers, spaces and hyphens only">
+                                <datalist id="subjectSuggestions">
+                                    <option value="Mathematics">
+                                    <option value="Physics">
+                                    <option value="Chemistry">
+                                    <option value="Computer Science">
+                                    <option value="English">
+                                    <option value="Biology">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="studyTopic">Topic</label>
+                                <input id="studyTopic" name="topic" type="text" required
+                                    placeholder="e.g. Calculus – Integration">
+                            </div>
+                            <div class="form-group">
+                                <label for="studyDuration">Duration (mins)</label>
+                                <input id="studyDuration" name="duration" type="number" min="1" max="720"
+                                    placeholder="e.g. 45" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studyDate">Date</label>
+                                <input id="studyDate" name="date" type="date" required>
+                            </div>
+                        </fieldset>
+
+                        <!-- Fieldset 2: Session Details -->
+                        <fieldset class="contact-fields">
+                            <legend>Session Details</legend>
+                            <div class="form-group">
+                                <label for="studyNotes">Notes (optional)</label>
+                                <textarea id="studyNotes" name="notes" rows="3"
+                                    placeholder="Any notes about this session…" style="width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--border-main);background:var(--bg-input);color:var(--text-primary);font-family:inherit;font-size:.9em;resize:vertical;box-sizing:border-box;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Study Mode</label>
+                                <div class="radio-group">
+                                    <label class="radio-label"><input type="radio" name="mode" value="Solo" checked> Solo</label>
+                                    <label class="radio-label"><input type="radio" name="mode" value="Group"> Group</label>
+                                    <label class="radio-label"><input type="radio" name="mode" value="Online"> Online</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><input type="checkbox" id="studyRevision" name="revision"> Revision session</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="studyMood">Productivity Level</label>
+                                <select id="studyMood" name="mood" style="width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--border-main);background:var(--bg-input);color:var(--text-primary);font-family:inherit;font-size:.9em;">
+                                    <option value="High">High 🔥</option>
+                                    <option value="Medium" selected>Medium ⚡</option>
+                                    <option value="Low">Low 😴</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit">+ Add Session</button>
+                        <div id="studyFormError" class="form-error" style="display:none;color:#f87171;font-size:.82em;margin-top:8px;"></div>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Study History</h3>
+                    <p class="section-desc" style="margin:0 0 10px;">Most recent sessions shown below.</p>
+                    <div id="studyList"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<footer class="site-footer">
+    <p>© 2025 Exam Strategy Analyzer · <a href="about.html">About</a> · <a href="summary.html">Summary</a> · Built for 22AIE115 – UID · <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

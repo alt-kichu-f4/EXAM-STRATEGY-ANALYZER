@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ℹ️ About – Exam Strategy Analyzer</title>
+    <meta name="description" content="About the Exam Strategy Analyzer project — features, team, and course info.">
+    <meta name="keywords" content="about, exam analyzer, team, Amrita, UI design project">
+    <meta property="og:title" content="About – Exam Strategy Analyzer">
+    <meta property="og:description" content="Learn about the Exam Strategy Analyzer project built for 22AIE115 UID.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About page specific inline styles */
+        .timeline-list { list-style: none; padding: 0; margin: 0; }
+        .timeline-list li { padding: 10px 0 10px 28px; position: relative; border-left: 2px solid var(--border-main); margin-left: 10px; }
+        .timeline-list li::before { content: "●"; position: absolute; left: -9px; top: 10px; color: var(--accent-gold); font-size: .9em; }
+        .timeline-list li:last-child { border-left-color: transparent; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <header class="sidebar-logo">
+            <h1>📖 Exam Analyzer</h1>
+            <span class="logo-sub">Strategy &amp; Performance</span>
+        </header>
+        <div class="sidebar-nav">
+            <a href="index.html"    class="nav-btn" data-page="index">   <span class="nav-icon">🏠</span> Home</a>
+            <a href="about.html"    class="nav-btn" data-page="about">   <span class="nav-icon">ℹ️</span> About</a>
+            <a href="study.html"    class="nav-btn" data-page="study">   <span class="nav-icon">📚</span> Study Log</a>
+            <a href="mock.html"     class="nav-btn" data-page="mock">    <span class="nav-icon">📝</span> Mock Tests</a>
+            <a href="analysis.html" class="nav-btn" data-page="analysis"><span class="nav-icon">📊</span> Analysis</a>
+            <a href="summary.html"  class="nav-btn" data-page="summary"> <span class="nav-icon">📋</span> Summary</a>
+        </div>
+        <aside class="sidebar-aside">
+            <p class="aside-tip">📘 <strong>Course:</strong> 22AIE115 – User Interface Design</p>
+        </aside>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Switch theme">
+                <span class="toggle-icon">🌙</span>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main-inner">
+
+            <div class="page-header">
+                <span class="page-icon">ℹ️</span>
+                <div class="page-header-text">
+                    <h2>About This Project</h2>
+                    <p class="section-desc">Built for the 22AIE115 – User Interface Design course</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>What is Exam Strategy Analyzer?</h3>
+                <p>A web-based tool built for students to organise study sessions, track mock test performance, and identify weak areas before exams.</p>
+                <br>
+                <p>The idea came from the common problem students face — studying a lot but not knowing if they are studying the <em>right things</em>. This tool helps bridge that gap.</p>
+            </div>
+
+            <div class="card">
+                <h3>Features at a Glance</h3>
+                <ul class="feature-list">
+                    <li>📌 Log study sessions by subject and topic</li>
+                    <li>📝 Record mock test scores and track accuracy</li>
+                    <li>📊 Multi-line chart with per-subject colour coding</li>
+                    <li>🎯 5-zone performance grading (Critical → Excellent)</li>
+                    <li>💡 Personalised study suggestions based on your scores</li>
+                    <li>🔖 Summary table of all subject performances with grade</li>
+                    <li>🌙 Dark and Light mode with smooth transitions</li>
+                    <li>💬 Daily motivational quotes to keep you going</li>
+                </ul>
+            </div>
+
+            <!-- Details/Summary for collapsible FAQ -->
+            <div class="card">
+                <h3>Development Timeline</h3>
+                <ul class="timeline-list">
+                    <li><strong>Week 1:</strong> Project planning and HTML structure</li>
+                    <li><strong>Week 2:</strong> CSS styling and responsive design</li>
+                    <li><strong>Week 3:</strong> JavaScript functionality and localStorage</li>
+                    <li><strong>Week 4:</strong> Testing, debugging, and final deployment</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Team / Creators</h3>
+                <p>Developed as part of <strong>22AIE115 – User Interface Design</strong> at <strong>Amrita School of Computing, Amritapuri Campus</strong>.</p>
+                <br>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <a href="manish.jpeg" target="_blank" title="View photo of Manish J">
+                            <img src="manish.jpeg" alt="Manish J" class="member-photo">
+                        </a>
+                        <p class="member-name">Manish J</p>
+                        <p class="member-role">UI Developer</p>
+                    </div>
+                    <div class="team-member">
+                        <a href="kiran.jpeg" target="_blank" title="View photo of Kiran S Nair">
+                            <img src="kiran.jpeg" alt="Kiran S Nair" class="member-photo">
+                        </a>
+                        <p class="member-name">Kiran S Nair</p>
+                        <p class="member-role">UI Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact card with anchor links + external links -->
+            <div class="card" id="contact">
+                <h3>Contact &amp; Links</h3>
+                <p>📧 Course: 22AIE115 – User Interface Design (UID)</p>
+                <p>🏫 Amrita School of Computing, Amritapuri Campus</p>
+                <p>📁 All data stored locally in your browser (localStorage) — no servers involved.</p>
+                <p>
+                    🔗 <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a> &nbsp;|&nbsp;
+                    <a href="summary.html#grade-table">View Grade Table</a> &nbsp;|&nbsp;
+                    <a href="index.html#resources">Resources</a>
+                </p>
+
+                <!-- Location map embed -->
+                <h4 style="margin:18px 0 10px;">📍 Campus Location</h4>
+                <div class="map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.3!2d76.4986!3d9.0938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062b818f800001%3A0x5b7f226b11c6e83!2sAmrita%20School%20of%20Computing%20Amritapuri!5e0!3m2!1sen!2sin!4v1700000000000"
+                        width="100%" height="220"
+                        style="border:0; border-radius:10px;"
+                        title="Amrita School of Computing, Amritapuri Campus location on Google Maps"
+                        allowfullscreen
+                        loading="lazy">
+                        Your browser does not support embedded maps.
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Collapsible tech stack -->
+            <div class="card">
+                <h3>Tech Stack</h3>
+                <details>
+                    <summary>View technologies used</summary>
+                    <ul class="feature-list" style="margin-top:12px;">
+                        <li>HTML5 — Semantic markup</li>
+                        <li>CSS3 — Variables, Flexbox, Grid, Transitions</li>
+                        <li>JavaScript (Vanilla) — DOM manipulation, localStorage</li>
+                        <li>Chart.js — Performance chart rendering</li>
+                        <li>Google Fonts — Inter typeface</li>
+                    </ul>
+                </details>
+            </div>
+
+        </div>
+    </main>
+</div>
+<footer class="site-footer">
+    <p>© 2025 Exam Strategy Analyzer · <a href="about.html">About</a> · <a href="summary.html">Summary</a> · Built for 22AIE115 – UID · <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

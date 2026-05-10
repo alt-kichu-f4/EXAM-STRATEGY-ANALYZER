@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 Summary – Exam Strategy Analyzer</title>
+    <meta name="description" content="Full subject performance table with grade zones and FAQs.">
+    <meta name="keywords" content="summary, performance table, grades, FAQ">
+    <meta property="og:title" content="Summary – Exam Strategy Analyzer">
+    <meta property="og:description" content="Full overview of performance across all subjects with grade zones.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .jump-nav { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+        .jump-nav a { font-size: .8em; color: var(--accent-blue); text-decoration: none; padding: 4px 10px; border: 1px solid var(--border-main); border-radius: 20px; }
+        .jump-nav a:hover { background: var(--bg-card); }
+    </style>
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <header class="sidebar-logo">
+            <h1>📖 Exam Analyzer</h1>
+            <span class="logo-sub">Strategy &amp; Performance</span>
+        </header>
+        <div class="sidebar-nav">
+            <a href="index.html"    class="nav-btn" data-page="index">   <span class="nav-icon">🏠</span> Home</a>
+            <a href="about.html"    class="nav-btn" data-page="about">   <span class="nav-icon">ℹ️</span> About</a>
+            <a href="study.html"    class="nav-btn" data-page="study">   <span class="nav-icon">📚</span> Study Log</a>
+            <a href="mock.html"     class="nav-btn" data-page="mock">    <span class="nav-icon">📝</span> Mock Tests</a>
+            <a href="analysis.html" class="nav-btn" data-page="analysis"><span class="nav-icon">📊</span> Analysis</a>
+            <a href="summary.html"  class="nav-btn" data-page="summary"> <span class="nav-icon">📋</span> Summary</a>
+        </div>
+        <aside class="sidebar-aside">
+            <p class="aside-tip">📋 <strong>Tip:</strong> Use summary to prepare your final revision list.</p>
+        </aside>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Switch theme">
+                <span class="toggle-icon">🌙</span>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main-inner">
+
+            <div class="page-header">
+                <span class="page-icon">📋</span>
+                <div class="page-header-text">
+                    <h2>Summary</h2>
+                    <p class="section-desc">Full overview of performance across all subjects</p>
+                </div>
+            </div>
+
+            <nav class="jump-nav" aria-label="Page sections">
+                <a href="#grade-table">Grade Table</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="card" id="grade-table">
+                <h3>Subject Performance Table</h3>
+                <div class="table-wrap">
+                    <table>
+                        <caption style="text-align:left;padding:0 0 10px;font-size:.8em;color:var(--text-secondary);">Aggregated scores from all mock tests per subject</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Score</th>
+                                <th scope="col">Accuracy</th>
+                                <th scope="col">Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryTable"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" style="color:var(--text-secondary);font-size:.78em;padding-top:10px;">
+                                    Scores aggregated across all test entries. Add tests in Mock Tests page.
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card" id="faq">
+                <h3>Frequently Asked Questions</h3>
+                <details class="faq-details">
+                    <summary class="faq-summary">Q: How is accuracy calculated?</summary>
+                    <p class="faq-answer">Accuracy = (Your Score ÷ Total Marks) × 100. Grades: Critical &lt;35%, Weak 35–49%, Average 50–64%, Good 65–84%, Excellent ≥85%.</p>
+                </details>
+                <details class="faq-details">
+                    <summary class="faq-summary">Q: Is my data saved?</summary>
+                    <p class="faq-answer">Yes — all data is stored in your browser's localStorage and persists after closing the tab.</p>
+                </details>
+                <details class="faq-details">
+                    <summary class="faq-summary">Q: Can I add the same subject multiple times?</summary>
+                    <p class="faq-answer">Yes! Each test entry is tracked individually on the chart — you'll see your progress over time.</p>
+                </details>
+                <details class="faq-details">
+                    <summary class="faq-summary">Q: How do I reset my data?</summary>
+                    <p class="faq-answer">Go to the Home page and click the "Reset All Data" button. This permanently deletes all logs and test results.</p>
+                </details>
+            </div>
+
+        </div>
+    </main>
+</div>
+<footer class="site-footer">
+    <p>© 2025 Exam Strategy Analyzer · <a href="about.html">About</a> · <a href="summary.html">Summary</a> · Built for 22AIE115 – UID · <a href="https://www.amrita.edu" target="_blank" rel="noopener">Amrita University ↗</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
